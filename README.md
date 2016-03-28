@@ -386,7 +386,7 @@ Copies of this document may be made for your own use and for distribution to oth
 #### B.1.1. 그룹 어트리뷰트
 #### B.1.2. 속성 어트리뷰트
 #### B.1.3. 반복적인 메타데이터 아이템
-### B.2. 애노테이션 프로레서를 사용하여 메타데이터 생성
+### B.2. 애노테이션 프로세서를 사용하여 메타데이터 생성
 #### B.2.1. 내부 속성
 #### B.2.2. 추가적인 메타데이터 추가
 ## C. 자동설정 클래스
@@ -5380,7 +5380,7 @@ server.servlet-path=/home
 #### B.1.3. 반복적인 메타데이터 아이템<a name="B.1.3. 반복적인 메타데이터 아이템"></a>
 "property"와 "group" 객체에 대한 완벽한 허용은 메타-데이터 파일 내에서 같은 이름이 여러번 반복될 수 있다. 예를 들어, 스프링부트는 Hikari, Tomcat 그리고 DBCP 클래스들에 대한  ```spring.datasource``` 속성들의 이름들에 대한 잠재적인 중복을 제공한다. 메타-데이터의 소비는 시나리오들을 지원할수 있도록 주의를 기울여야 한다.
 
-### B.2. 애노테이션 프로레서를 사용하여 메타데이터 생성<a name="B.2. 애노테이션 프로레서를 사용하여 메타데이터 생성"></a>
+### B.2. 애노테이션 프로세서를 사용하여 메타데이터 생성<a name="B.2. 애노테이션 프로세서를 사용하여 메타데이터 생성"></a>
 ```spring-boot-configuration-processor``` jar 를 사용하여 ```@ConfigurationProperties``` 선언된 아이템들로부터 설정 메타-데이터 파일을 쉽게 생성할 수 있다. jar에 포함된 Java annotation processor는 프로젝트를 컴파일할 때 요청한다. 프로세서를 사용하려면, ```spring-boot-configuration-processor```을 선택적으로 의존성을 포함, 메이븐의 경우는 다음과 같이 추가할 수 있다:
 
 ```xml
