@@ -1610,7 +1610,7 @@ my.servers[0]=dev.bar.com
 my.servers[1]=foo.bar.com
 ```
 
-properties가 연결되는 것처럼 스프링 ```DataBinder``` 유틸리티를 사용할 수 있다(```@ConfigurationProperties``` 가 어떻게 동작하는지 살펴보라) 대상이 되는 빈에서 ```java.util.List(or Set)``` 속성을 가지고 씨거나 혹은 수정자(setter)를 사용하거나, 변경될 수 있는 값(예를 들어, 위에서 본 프로퍼티스도 유사하게 연결)을 초기화할 수도 있다.
+properties가 연결되는 것처럼 스프링 ```DataBinder``` 유틸리티를 사용할 수 있다(```@ConfigurationProperties``` 가 어떻게 동작하는지 살펴보라) 대상이 되는 빈에서 ```java.util.List(or Set)``` 속성을 가지고 쓰거나 혹은 수정자(setter)를 사용하거나, 변경될 수 있는 값(예를 들어, 위에서 본 프로퍼티스도 유사하게 연결)을 초기화할 수도 있다.
 
 ```
 @ConfigurationProperties(prefix="my")
@@ -1623,10 +1623,10 @@ public class Config {
 }
 ```
 #### 23.5.2. 스프링 환경에서 속성들을 YAML로 노출
-```YamlPropertySourceLoader``` 클래스는 스프링 ```Environment```의 ```PropertySource````처럼 외부의 YAML을 사용할 수 있다. 이는 YAML 속성들에 접근하기 위한 플레이스홀더 문법인 ```@Value``` 애노테이션과 유사한 형태로 사용하는 것을 허용한다.
+```YamlPropertySourceLoader``` 클래스는 스프링 ```Environment```의 ```PropertySource```처럼 외부의 YAML을 사용할 수 있다. 이는 YAML 속성들에 접근하기 위한 플레이스홀더 문법인 ```@Value``` 애노테이션과 유사한 형태로 사용하는 것을 허용한다.
 
 #### 23.5.3. 다중 프로파일 YAML 문서
-단독 파일로 구성된 YAML 문서에 ```spring.profiles```키로 지정항 다중 프로파일을 저으이하여 사용하는 것이 가능하다. 예를 들어:
+단독 파일로 구성된 YAML 문서에 ```spring.profiles```키로 지정한 다중 프로파일을 정의하여 사용하는 것이 가능하다. 예를 들어:
 ```
 server:
     address: 192.168.1.100
@@ -1642,7 +1642,7 @@ server:
     address: 192.168.1.120
 ```
 
-위의 예에서, ```server.address``` 속성이 ```127.0.0.1```라면 ```development```` 속성이 활성화 상태다. 만약 ```development``` 와 ```production``` 프로파일을 사용할 수 **없다면**, 속성값은 ```192.168.1.100```일 것이다.
+위의 예에서, ```server.address``` 속성이 ```127.0.0.1```라면 ```development``` 속성이 활성화 상태다. 만약 ```development``` 와 ```production``` 프로파일을 사용할 수 **없다면**, 속성값은 ```192.168.1.100```일 것이다.
 
 #### 23.5.4. YAML 의 단점
 YAML 파일은 ```@PropertySource``` 애노테이션 등으로 불러올 수 없다. 이와 같은 형태로 값을 호출하여 사용해야 프로퍼티스 파일을 사용해야 한다.
