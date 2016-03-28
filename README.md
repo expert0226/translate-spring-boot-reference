@@ -1166,14 +1166,14 @@ dependencies {
 스프링부트는 동작하는 데 별다른 코드 레이아웃을 요구하지는 않지만, 도움이 되는 몇가지 연습할 수 있는 것들이 있다.
 
 ### 14.1. 'default' 패키지 이용
-"기본 패키지default package"에 있는 것으로 간주되는 패키지 선언을 포함하지 않는 클래스를 위치해 있는 경우, "기본 패키지"의 사용은 권장되지 않는 피해야하는 사항이다. ```@ComponentScan``` 혹은 ```@EntityScan``` 애노테이션을 사용하는 스프링부트 애플리케이션에 포함되어 있는 모든 jar들의 클래스를 읽는 과정에서 문제가 발생할 수 있다.
+"기본 패키지default package"에 있는 것으로 간주되는 (즉, 패키지 선언을 포함하지 않는) 클래스가 있는 경우, "기본 패키지"의 사용은 권장되지 않는, 피해야하는 사항이다. ```@ComponentScan``` 혹은 ```@EntityScan``` 애노테이션을 사용하는 스프링부트 애플리케이션에 포함되어 있는 모든 jar들의 클래스를 읽는 과정에서 문제가 발생할 수 있다.
 
 > 팁: 우리는 자바가 권장하는 패키지 작명관례와 도메인명을 역순으로 사용하는 것을 권장한다.
 
 ### 14.2. 메인 애플리케이션 클래스 위치
 일반적으로 메인 애플리케이션 클래스는 다른 클래스들보다 최상위 패키지에 위치하는 것을 권장한다. ```@EnableAutoConfiguration``` 애노테이션은 메인 클래스에 선언되는 경우가 일반적인데, 이는 명시적인 아이템들을 대상으로 하는 기본 "검색 패키지"를 선언하는 것이기도 하다. 예를 들어, 애플리케이션에서 JPA를 사용하고 있다면, ```@EnableAutoConfiguration``` 애노테이션 선언된 클래스의 패키지는 ```@Entity``` 항목들을 검색하여 사용할 것이다.
 
-```@ComponentScan``` 애노테이션을 루트 패키지에서 사용하면 ```basePackage``` 속성을 선언없이 사용가능하다.
+```@ComponentScan``` 애노테이션을 루트 패키지에서 사용하면 ```basePackage``` 속성없이 사용가능하다.
 
 여기 기본적인 계층이 있다:
 ```
@@ -1232,7 +1232,7 @@ public class Application {
 
 자동설정을 하도록 선택하려면 ```@Configuration``` 클래스에 ```@EnableAutoConfiguration``` 애노테이션을 추가하면 된다.
 
-> 팁: 지금까지 ```@EnableAutoConfiguration``` 애노테이션만 추가해본 적이 없다면, 기본 ```@Configuration``` 클래스에 해당 애노테이션을 추가하기를 권장한다.
+> 팁: 지금까지 ```@EnableAutoConfiguration``` 애노테이션을 추가해본 적이 없다면, 기본 ```@Configuration``` 클래스에 해당 애노테이션을 추가하기를 권장한다.
 
 ### 16.1. 점진적으로 자동설정을 대체
 자동설정은 확장성이 없다, 특정 시점이 되면 자동설정의 특정 부분들을 대체하는 설정을 정의해야 한다. 예를 들어, ```DataSource```빈을 추가하고자 할 때, 기본 내장형 데이터베이스의 지원은 걷어내야 한다.
@@ -1456,7 +1456,7 @@ new SpringApplicationBuilder()
 
 ```ApplicationContext``` 유형의 제어를 완벽히 하고 싶다면 ```setApplicationContextClass(...)```를 호출하여 사용할 수 있다.
 
-> 팁: ```setWebEnvirionment(false)는 jUnit 테스트에서 ```SpringApplication``` 사용할 때 자주 사용한다.
+> 팁: ```setWebEnvirionment(false)```는 jUnit 테스트에서 ```SpringApplication``` 사용할 때 자주 사용한다.
 
 ### 22.6. 커맨드라인러너 사용
 커멘드라인을 통해 전달받은 인자를 접근하고 싶다거나, ```SpringApplication```에서 특정 모드를 실행해야한다면 ```CommandLineRunner``` 인터페이스를 구현하면 된다. ```run(Stirng..args)``` 메서드는 이 인터페이스를 구현한 모든 스프링빈을 호출할 것이다.
@@ -1483,9 +1483,9 @@ public class MyBean implements CommandLineRunner {
 추가적으로, ```org.springframework.boot.ExitCodeGenerator``` 인터페이스를 구현한 빈들은 애플리케이션이 종료될 떄 특정 exit code를 반환하기를 원하는 경우 사용한다.
 
 ## 23. 외부설정<a name="23. 외부설정"></a>
-스프링부트는 동일한 애플리케이션으로 다른 환경에서 동작할 수 있도록 설정을 확장하는 것을 허용한다. 프로퍼티스 파일, YAML 파일, environment 변수 그리고 커맨드라인 인자를 통해서 설정을 확장할 수 있다. 속성 값은 ```@Value``` 애노테이션을 사용하여 바로 주입할 수도, 스프링의 ```Environment``` 추상화에 접근하거나 객체를 구축하여 연동할 수 있다.
+스프링부트는 동일한 애플리케이션으로 다른 환경에서 동작할 수 있도록 설정을 확장하는 것을 허용한다. 프로퍼티스 파일, YAML 파일, environment 변수 그리고 커맨드라인 인자를 통해서 설정을 확장할 수 있다. 속성 값은 ```@Value``` 애노테이션을 사용하여 바로 주입할 수도, 스프링의 ```Environment``` 추상화에 접근하거나 객체를 구축하여 연동할 수도 있다.
 
-스프링부트는 값values, 속성properties 들에 대해서 다음과 같은 순위를 고려하여 합리적으로 오버라이딩하는 것을 허용하도록 설계된 매우 세분화된 ```Pr다opertySource``` 순위order를 사용한다.
+스프링부트는 값values, 속성properties 들에 대해서 다음과 같은 순위를 고려하여 합리적으로 오버라이딩하는 것을 허용하도록 설계된 매우 세분화된 ```PropertySource``` 순위order를 사용한다.
 
 > 1. 커맨드라인 인자
 > 2. java:comp/env 의 JNDI 어트리뷰트
@@ -1513,7 +1513,7 @@ public class MyBean {
 }
 ```
 
-jar 에 포함된 ```application.properties```에는 합리적인 기본값으로 ```name```을 제공한다. 출시하여 실행하려할 때, ```application.properties```는 jar 테스트를 위해서 외부에서 ```name```을 오버라이드할 수 있게 해준다. 커맨드 라인에서 변경하여 실행할 수 있다(예: ```java -jar app.jar -name="Spring")
+jar 에 포함된 ```application.properties```에는 합리적인 기본값으로 ```name```을 제공한다. 출시하여 실행하려할 때, ```application.properties```는 jar 테스트를 위해서 외부에서 ```name```을 오버라이드할 수 있게 해준다. 커맨드 라인에서 변경하여 실행할 수 있다(예: ```java -jar app.jar -name="Spring"```)
 
 ```RandomValuePropertySource```는 무작위 값을 주입하는데 매우 유용하다(예: 시크릿을 넣거나 테스트 작성시). integer, long 혹은 string을 제공한다. 예:
 
@@ -1525,7 +1525,7 @@ my.number.less.than.ten=${random.int(10)}
 my.number.in.range=${random.int[1024,65536]}
 ```
 
-```random.int*``` 문법은 ```OPEN value(,max) CLOSE```에서 ```OPEN, CLOSE```는 어느 문자나 가능하며 ```value, max는 정수다. 만약 ```max```가 있다면 ```value```는 최소값이 되고 ```max```는 최대값이 된다(배타적인).
+```random.int*``` 문법은 ```OPEN value(,max) CLOSE```에서 ```OPEN, CLOSE```는 어느 문자나 가능하며 ```value, max```는 정수다. 만약 ```max```가 있다면 ```value```는 최소값이 되고 ```max```는 최대값이 된다(배타적인).
 
 ### 23.1. 커맨드라인 속성 접근
 기본 ```SpringApplication```은 커맨드라인에서 전달받은 인자('--'으로 시작하는, 예: ```--server.port=9000```)를 ```property```로 변환하여 스프링 ```environment```에 추가한다. 앞에서 언급했듯이, 커맨드라인 프로퍼티즈는 다른 프로퍼티 소스들보다 우선한다.
