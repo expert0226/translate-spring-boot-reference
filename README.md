@@ -1777,9 +1777,9 @@ spring.profiles.include: proddb,prodmq
 출력된다(10MB 크기가 되면 파일을 새로 생성).
 
 기본적으로, 'Starter POMs'를 사용한다면, Logback을 로깅에 사용할 것이다. 유연한
- Logback은 Java Util Logging, Commons Logging, Log4j 혹은 SLF4J 를 사용하는 의존적 라이브러리들을 의존적인 라이브러리들도 문제없이 동작하는 것을 보장한다.
+ Logback은 Java Util Logging, Commons Logging, Log4j 혹은 SLF4J 를 사용하는 의존적 라이브러리들도 문제없이 동작하는 것을 보장한다.
  > 팁:
- > 자바에서 사용가능한 로깅 프레임워크들은 대부분 지원한다. 목록만 보고서 당혹러워할 이유는 없다. 기본적으로 로깅 의존성을 변경할 필요는 없을 것이며 스프링부트는 기본적으로 잘 되어 있어있다.
+ > 자바에서 사용가능한 로깅 프레임워크들은 대부분 지원한다. 목록만 보고서 당혹러워할 이유는 없다. 기본적으로 로깅 의존성을 변경할 필요는 없을 것이며 스프링부트는 기본적으로 잘 되어있다.
 
 ### 25.1. 로그 형식
 스프링부트의 기본적인 로그 출력은 다음과 같다:
@@ -1793,7 +1793,7 @@ spring.profiles.include: proddb,prodmq
 
 출력된 로그에 포함된 정보는 다음과 같다:
 * 날짜와 시간 - 밀리세컨드ms 단위로 꼼꼼하고 쉽게 정렬가능하다.
-* 로그레벨 - ```ERROR```, ```WARN```, ```INFO```, ````DEBUG``` 그리고 ```TRACE```
+* 로그레벨 - ```ERROR```, ```WARN```, ```INFO```, ```DEBUG``` 그리고 ```TRACE```
 * 프로세스 ID
 * ```---``` - 실제 로그메시지가 출력되는 부분을 나누려는 구분자
 * Logger name - 소스 클래스 네임(자주 줄어든다).
@@ -1816,7 +1816,7 @@ $ java -jar myapp.jar --debug
 
 ### 25.4. 로그 레벨
 
-스프링 ```Environment```(예를 들어 ```applicatoin.properties```)에 ```logging.leve.*=Level```로 정의하고 ```LEVEL```에는 ```TRACE```, ```DEBUG```, ```INFO```, ```WARN```, ```ERROR```, ```FATA```, ```OFF``` 중에서 선택하면 로그 레벨은 모든 지원가능한 로깅 시스템에 적용된다. ```application.properties``` 예제로:
+스프링 ```Environment```(예를 들어 ```applicatoin.properties```)에 ```logging.level.*=Level```로 정의하고 ```LEVEL```에는 ```TRACE```, ```DEBUG```, ```INFO```, ```WARN```, ```ERROR```, ```FATA```, ```OFF``` 중에서 선택하면 로그 레벨은 모든 지원가능한 로깅 시스템에 적용된다. ```application.properties``` 예제로:
 
 ```
 logging.level.org.springframework.web: DEBUG
@@ -1825,7 +1825,7 @@ logging.level.org.hibernate: ERROR
 
 ### 25.5. 로그 설정 변경<a name="로그 설정 변경"></a>
 
-다양한 로깅 시스템은 기본적인 라이브러리를 포함하여 클래스패스 상의 활동상태를 관찰할 수 있다, 또한 클래스패스 루트에 위치한 적절한 설정파일을 제공하면 변경할 수 있으나, 스프링 ```Environment``` ```logging.config``` 속성으로 정의해야한다. (보충하자면, 로깅 시작은 ```ApplicationContext```가 **생성되기 전** 초기화되는 순간부터 시작된다. 스프링 ```@Configuration``` 파일에서 ```@PropertySources``` 에서 로깅을 컨트롤하는 것은 불가능하다. 시스템 프로퍼티즈와 스프링부트의 외부설정 파일을 이용한 것은 잘 동작한다. )
+다양한 로깅 시스템은 기본적인 라이브러리를 포함하여 클래스패스 상의 활동상태를 관찰할 수 있다, 또한 클래스패스 루트에 위치한 적절한 설정파일을 제공하면 변경할 수 있으나, 스프링 ```Environment``` ```logging.config``` 속성으로 정의해야한다. (보충하자면, 로깅 시작은 ```ApplicationContext```가 **생성되기 전** 초기화되는 순간부터 시작된다. 스프링 ```@Configuration``` 파일에서 ```@PropertySources``` 에서 로깅을 컨트롤하는 것은 불가능하다. 시스템 프로퍼티와 스프링부트의 외부설정 파일을 이용한 것은 잘 동작한다. )
 
 로깅시스템의 부수적인, 다음의 파일들이 있어야 한다:
 
@@ -1835,21 +1835,21 @@ logging.level.org.hibernate: ERROR
 | Log4j | log4j.properties 혹은 log4j.xml |
 | JDK(Java Util Logging) | logging.properties |
 
-설정에 필요한 몇몇 속성들은 스프링 ```Envirionment```에서 시스템 프로퍼티스로 변환된다.
+설정에 필요한 몇몇 속성들은 스프링 ```Envirionment```에서 시스템 프로퍼티로 변환된다.
 
 | Spring environment | System property | 설명 |
 |--------------------|-----------------|------|
 | logging.file | LOG_FILE | 정의되어 있다면 기본 로그 설정으로 사용된다. |
-| lggging.path | LOG_PATH | 정의도어 있다면 기본 로그 설정으로 사용된다. |
+| lggging.path | LOG_PATH | 정의되어 있다면 기본 로그 설정으로 사용된다. |
 | PID | PID | 현재 프로세스 ID(가능하다면 발견한 프로세스 ID를 사용하며 정의되어 있지 않은 경우에는 OS 환경 변수를 사용한다.) **재확인** |
 
-모든 로깅 시스템에 대한 지원은 로깅 시스템의 설정 파일을 분석하여 시스템 프로퍼티스로 변환할 수 있기 때문이다. 예제로 ```spring-boot.jar``` 안에 기본 설정을 살펴보라.
+모든 로깅 시스템에 대한 지원은 로깅 시스템의 설정 파일을 분석하여 시스템 프로퍼티로 변환할 수 있기 때문이다. 예제로 ```spring-boot.jar``` 안에 기본 설정을 살펴보라.
 > 위험: 실행가능한 JAR로 실행했을 때 Java Util Logging을 사용할 때 클래스로딩classloading 에서 문제가 발생한다는 이슈가 있다. 우리는 가능하면 이것을 피하기를 권장한다.
 
 ## 26. 웹 애플리케이션 개발
 스프링부트는 웹 애플리케이션 배포에 최적화되어 있다. 내장형 톰캣tomcat, 제티jetty 혹은 언더토우Undertow 등을 사용한 내장형 HTTP 서버를 쉽게 만들 수 있다. ```spring-boot-starter-web``` 모듈을 사용하여 웹 애플리케이션을 빠르게 구성하고 실행할 수 있다.
 
-만약 스프링부트 웹 애플리케이션을 개발해본 경험이 없다면 [시작하기](#초기 스프링부터 애플리케이션 개발)섹션의 "Hello world!" 예제를 따라할 수 있다.
+만약 스프링부트 웹 애플리케이션을 개발해 본 경험이 없다면 [시작하기](#초기 스프링부터 애플리케이션 개발)섹션의 "Hello world!" 예제를 따라할 수 있다.
 
 ### 26.1. 'Spring Web MVC framework'<a name="Spring Web MVC framework"></a>
 
@@ -1879,10 +1879,10 @@ public class MyRestController {
 }
 ```
 
-스프링MVC는 코어 스프링프레임워크의 일부이며 자세한 정보는 [레퍼런스 문서](http://docs.spring.io/spring/docs/4.1.3.RELEASE/spring-framework-reference/htmlsingle#mvc)에서 얻을 수 있다. [spring.io/guides](http://spring.io/guides)에서 스프링MVC를 지원하는 다양한 가이드를 살펴볼 수 있다.
+스프링 MVC는 코어 스프링프레임워크의 일부이며 자세한 정보는 [레퍼런스 문서](http://docs.spring.io/spring/docs/4.1.3.RELEASE/spring-framework-reference/htmlsingle#mvc)에서 얻을 수 있다. [spring.io/guides](http://spring.io/guides)에서 스프링 MVC를 지원하는 다양한 가이드를 살펴볼 수 있다.
 
 #### 26.1.1. Spring MVC 자동설정
-스프링부트는 대부분의 애플리케이션에서 동작하는 스프링MVC에 관한 자동설정을 제공한다.
+스프링부트는 대부분의 애플리케이션에서 동작하는 스프링 MVC에 관한 자동설정을 제공한다.
 
 자동설정은 스프링이 기본적으로 제공하는 최상의 기능들을 추가한다:
 * ```ContentNegotiatingViewResolver```와 ```BeanNameViewResolver``` 빈을 포함
@@ -1894,7 +1894,7 @@ public class MyRestController {
 * ```favicon``` 변경 지원
 
 스프링MVC을 완벽히 제어하고 싶다면, ```@Configuration``` 와 함께 ```@EnableWebMvc``` 를 사용할 수 있다. 만약 스프링부트 MVC 기능을 사용하지 않고, 추가적인 [MVC 설정](http://docs.spring.io/spring/docs/4.1.3.RELEASE/spring-framework-reference/htmlsingle#mvc)으로 (인터셉터interceptors, 포맷터formatters, 뷰view 컨트롤러 등)
-```WebMVcConfigureAdapter``` 유형의 ```@Bean```을 추가할 수 있다. ```@EnableWebMvc```**없이**.
+```WebMvcConfigureAdapter``` 유형의 ```@Bean```을 추가할 수 있다. ```@EnableWebMvc```**없이**.
 
 #### 26.1.2. ```HttpMessageConverter```
 스프링MVC는 HTTP 요청과 응답을 변환하는데 ```HttpMessageConverter``` 인터페이스를 사용한다. 기본적으로 제공하는 설정은, 예를 들어 객체는 자동으로 JSON(Jackson 라이브러리를 사용) 이나 XML(가능하다면 Jackson XML 확장을 사용하거나 JAXB를 사용)으로 변환한다. 문자열string은 ```UTF-8```로 기본 인코딩된다.
@@ -1921,7 +1921,7 @@ public class MyConfiguration {
 ```HttpMessageConverter``` 빈은 컨텍스트에 컨버터 목록을 추가할 것이다. 또한 기본 컨버터들을 덧칠override 하는 방법도 있다.
 
 #### 26.1.3. ```MessageCodesResolver```
-스프링MVC는 ```MessageCodeConverter```에 선언된 에러로부터 에러메시지를 표시하기 위해 에러코드를 생성하는 전략을 가지고 있다. ```spring.mvc.message-codes-resolver.format```를 설정하여 ```PREFIX_ERROR_CODE``` 혹은 ```PREFIX_ERROR_CODE``` 속성을 설정해뒀다면 스프링부트가 ```MessageCodesResolver```를 생성할 것이다(```DefaultMessageCodesResolver.Format``` 목록을 살펴보자 ).
+스프링MVC는 ```MessageCodeConverter```에 선언된 에러로부터 에러메시지를 표시하기 위해 에러코드를 생성하는 전략을 가지고 있다. ```spring.mvc.message-codes-resolver.format```를 설정하여 ```PREFIX_ERROR_CODE``` 혹은 ```POSTFIX_ERROR_CODE``` 속성을 설정해뒀다면 스프링부트가 ```MessageCodesResolver```를 생성할 것이다(```DefaultMessageCodesResolver.Format``` 목록을 살펴보자 ).
 
 #### 26.1.4. 정적 컨텐츠Static Content
 스프링부트는 기본적으로 클래스패스 혹은 ```ServletContext``` 루트에 있는 ```/static```(혹은 ```/public``` 혹은 ```/resource``` 혹은 ```/META-INF/resource```) 기반으로 정적 컨텐츠를 제공한다. 스프링MVC의 ```ResourceHttpRequestHandler```를 사용하거나 ```WebMvcConfigureAdapter```를 추가하고 ```addResourceHandler``` 메서드를 오버라이드하여 수정할 수 있다.
@@ -1933,7 +1933,7 @@ public class MyConfiguration {
 > 팁: 애플리케이션을 **jar** 로 묶으려packaged 한다면 ```src/main/webapp``` 폴더는 사용하지 말자. 이 폴더는 일반적으로, **'war' 묶음인 경우에만** 동작하며, 대부분의 빌드툴이 **jar** 파일을 생성하는 과정에서 암묵적으로 무시한다.
 
 #### 26.1.5. Template engines
-REST 웹서비스가 잘 되어 있다면, 스프링MVC를 이용하여 동적인 HTML 컨텐츠를 제공할 수 있다. 스프링MVC는 벨로시티Velocity, 프리마커FreeMarker 그리고 JSP 등을 포함한 다양한 템플릿 기술을 지원한다. 다양한 템플릿 엔진들을 스프링MVC와의 통합된다.
+REST 웹서비스가 잘 되어 있다면, 스프링MVC를 이용하여 동적인 HTML 컨텐츠를 제공할 수 있다. 스프링MVC는 벨로시티Velocity, 프리마커FreeMarker 그리고 JSP 등을 포함한 다양한 템플릿 기술을 지원한다. 다양한 템플릿 엔진들을 스프링MVC와 통합된다.
 
 스프링부트는 다음의 템플릿 엔진들을 지원하는 자동설정을 포함하고 있다:
 * [프리마커FreeMarker](http://freemarker.org/docs/)
@@ -1941,14 +1941,14 @@ REST 웹서비스가 잘 되어 있다면, 스프링MVC를 이용하여 동적�
 * [타임리프Thymeleaf](http://www.thymeleaf.org/)
 * [벨로시티Velocity](http://velocity.apache.org/)
 
-위에 거론된 템플릿 엔진들 중에서 한가지를 기본설정으로 사용하며느, 템플릿들은 ```src/main/resources/template``` 에서 자동으로 가져온다.
+위에 거론된 템플릿 엔진들 중에서 한가지를 기본설정으로 사용하면, 템플릿들은 ```src/main/resources/template``` 에서 자동으로 가져온다.
 
-> 팁: JSPs는 가능하면, 내장형 서블릿 컨테이너를 사용할 때 [알려진 여러가지 제약사항들](file:///home/honeymon/workspace/git-repository/translate-spring-boot-reference-doc/Spring%20Boot%20Reference%20Guide.html#boot-features-jsp-limitations)을 피하길 바란다.
+> 팁: JSP는 가능하면, 내장형 서블릿 컨테이너를 사용할 때 [알려진 여러가지 제약사항들](file:///home/honeymon/workspace/git-repository/translate-spring-boot-reference-doc/Spring%20Boot%20Reference%20Guide.html#boot-features-jsp-limitations)을 피하길 바란다.
 
 #### 26.1.6. 오류 제어Error handling
-스프링부트는 ```/error``` 와 매칭되는 다양한 경로의 모든 에러 서블릿 컨테이너에 등록된 'global' 에러 페이지를 제어한다. 클라이언트는 HTTP 상태와 예외 메시지 등의 에러에 관한 자세한 내용을 JSON 응답으로 제공받을 수 있다. 브라우저인 경우에는 HTML 형태에 동일한 데이터를 기록한 `Whitelabel!`(변경하는 방법려면 'error'를 처리하는 ```view```를 추가하면 된다) 에러 뷰를 보게된다. 기본적으로는 ```ErrorController```를 구현하고 빈으로 저의하면 완벽히 대처가 가능하다. 혹은 이미 존재하는 기작에 따라 ```ErrorAttributes``` 빈을 간단히 추가할 수 있지만 내용을 대체해야 한다.
+스프링부트는 ```/error``` 와 매칭되는 다양한 경로의 모든 에러 서블릿 컨테이너에 등록된 'global' 에러 페이지를 제어한다. 클라이언트는 HTTP 상태와 예외 메시지 등의 에러에 관한 자세한 내용을 JSON 응답으로 제공받을 수 있다. 브라우저인 경우에는 HTML 형태에 동일한 데이터를 기록한 `Whitelabel!`(변경하는 방법려면 'error'를 처리하는 ```view```를 추가하면 된다) 에러 뷰를 보게된다. 기본적으로는 ```ErrorController```를 구현하고 빈으로 정의하면 완벽히 대처가 가능하다. 혹은 이미 존재하는 기작에 따라 ```ErrorAttributes``` 빈을 간단히 추가할 수 있지만 내용을 대체해야 한다.
 
-몇몇 상황들에 대한 에러페이지를 세밀하게 정의하고자 한다면, 내장형 서블릿 컨테이너는 에러를 제어하기 위한 지원하는 공통uniform 자바 DSL을 제공한다. 예를 들어:
+몇몇 상황들에 대한 에러페이지를 세밀하게 정의하고자 한다면, 내장형 서블릿 컨테이너는 에러를 제어하기 위해 지원하는 공통uniform 자바 DSL을 제공한다. 예를 들어:
 
 ```
 @Bean
@@ -1968,9 +1968,9 @@ private static class MyCustomizer implements EmbeddedServletContainerCustomizer 
 }
 ```
 
-또한 [@ExceptionHandler method](http://docs.spring.io/spring/docs/4.1.3.RELEASE/spring-framework-reference/htmlsingle/#mvc-exceptionhandlers) 그리고 [@ControllerAdvice](http://docs.spring.io/spring/docs/4.1.3.RELEASE/spring-framework-reference/htmlsingle/#mvc-ann-controller-advice) 같은 일반적인 스프링MVC의 기능들을 사용할 수 있다. ```ErrorController``` 제어되지 않는 예외들을 다룰 때 사용한다.
+또한 [@ExceptionHandler](http://docs.spring.io/spring/docs/4.1.3.RELEASE/spring-framework-reference/htmlsingle/#mvc-exceptionhandlers) method 그리고 [@ControllerAdvice](http://docs.spring.io/spring/docs/4.1.3.RELEASE/spring-framework-reference/htmlsingle/#mvc-ann-controller-advice) 같은 일반적인 스프링MVC의 기능들을 사용할 수 있다. ```ErrorController``` 제어되지 않는 예외들을 다룰 때 사용한다.
 
-N.B.(?? 뭐지) ```Filter```를 통해 ```ErrorPage``` 경로를 등록하여 제어할 수도 있다(예로, Jersey 그리고 Wicket 과 같은 비 스프링웹프레임워크에서는 일반적으로 사용), ```Filter```는 ```ERROR``` 디스패쳐dispatcher에 등록된다. 예:
+중요!([N.B.](http://dictionary.cambridge.org/dictionary/english/nb)) ```Filter```를 통해 ```ErrorPage``` 경로를 등록하여 제어할 수도 있다(예로, Jersey 그리고 Wicket 과 같은 비 스프링웹프레임워크에서는 일반적으로 사용), ```Filter```는 ```ERROR``` 디스패쳐dispatcher에 등록된다. 예:
 
 ```
 @Bean
