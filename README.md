@@ -2096,7 +2096,7 @@ public EmbeddedServletContainerFactory servletContainer() {
 Using default security password: 78fa095d-3f4c-48b1-ad50-e24c31d5cf35
 ```
 
-제공되는 ```security.user.password``` 프로퍼티즈를 이용하여 비밀번호를 변경할 수 있다. 이것 외에 [SecurityProperties](http://github.com/spring-projects/spring-boot/tree/master/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/security/SecurityProperties.java) 의 다른 유용한 프로퍼티즈들로 확장가능하다(프로퍼티즈 접두어는 "security").
+제공되는 ```security.user.password``` 프로퍼티즈를 이용하여 비밀번호를 변경할 수 있다. 이것 외에 [SecurityProperties](http://github.com/spring-projects/spring-boot/tree/master/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/security/SecurityProperties.java) 의 다른 유용한 프로퍼티들도로 확장가능하다(프로퍼티 접두어는 "security").
 
 기본적인 보안 설정은 ```SecurityAutoConfiguration```의 구현체와 그 안에 임포트되어 있는 클래스들(웹보안을 위한 ```SpringBootWebSecurityConfiguration``` 과 비-웹 애플리케이션과 관련된 인증설정을 위한 ```AuthenticationManagerConfiguration```)이 있다. ```@EnableWebSecurity``` 와 빈을 추가하는 것으로 웹 애플리케이션의
 
@@ -2110,7 +2110,7 @@ Using default security password: 78fa095d-3f4c-48b1-ad50-e24c31d5cf35
 인-메모리 내장형 데이터베이스를 사용하면 애플리케이션을 개발하는데 편리하다. 당연히, 인-메모리 데이터베이스는 영속적인 저장소를 제공하지 않는다. 애플리케이션을 시작할 때와 애플리케이션을 종료할 때 데이터를 옮기기 위해 데이터베이스를 필요로 할 것이다.
 > 팁: 어떻게 하는지는 [어떻게 데이터베이스를 초기화하는지 섹션](#데이터베이스 초기화)에 정리되어 있다.
 
-스프링부트는 내장형 [H2](http://www.h2database.com/), [HSQL](http://hsqldb.org/)와 [Derby](http://db.apache.org/derby/) 데이터베이스를 자동설정할 수 있다. 특별히 연결 URL을 제공할 필요가 없다면, 사용하길 원하는 내장된 데이터베이스 의존성을 빌드에 포함시키면 된다.
+스프링부트는 내장형 [H2](http://www.h2database.com/), [HSQL](http://hsqldb.org/)과 [Derby](http://db.apache.org/derby/) 데이터베이스를 자동설정할 수 있다. 특별히 연결 URL을 제공할 필요가 없다면, 사용하길 원하는 내장된 데이터베이스 의존성을 빌드에 포함시키면 된다.
 
 예를 들어, 기본적인 POM 의존성은 다음과 같다:
 ```xml
@@ -2131,7 +2131,7 @@ Using default security password: 78fa095d-3f4c-48b1-ad50-e24c31d5cf35
 출시 데이터베이스 연결에는 ```DataSource```의 풀링 사용을 자동으로 설정할 수 있다. 여기 지정 구현체를 선택하는 알고리듬이 있다.
 * 성능과 동시성을 위한 톰캣 풀링 ```DataSource``` 설정은, 언제든지 선택할 수 있다.
 * HikariCP라면 사용가능하다.
-* Commons DBCP라면 사용가지만, 출시 시에 사용하는 것은 권장하지 않는다.
+* Commons DBCP라면 사용 가능하지만, 출시 시에 사용하는 것은 권장하지 않는다.
 * 마지막으로 Commons DBCP2는 사용가능하다.
 
 만약 ```spring-boot-starter-jdbc```혹은 ``` spring-boot-starter-data-jpa``` 'starter POMs'를 사용한다면 자동적으로 ```tomcat-jdbc```에 관한 의존성이 자동으로 추가된다.
@@ -2145,7 +2145,7 @@ spring.datasource.password=dbpass
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 ```
 
-[DataSourceProperties](http://github.com/spring-projects/spring-boot/tree/master/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jdbc/DataSourceProperties.java)를 보면 보다 자세한 제공옵션들을 확인할 수 있다.
+[DataSourceProperties](http://github.com/spring-projects/spring-boot/tree/master/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jdbc/DataSourceProperties.java)를 보면, 보다 자세한 제공옵션들을 확인할 수 있다.
 > 팁: 굳이 driver-class-name 을 정의할 필요는 없다. 스프링부트는 url로 부터 대부분의 데이터베이스를 알아낼 수 있다.
 
 > 노트: ```DataSource``` 풀링을 만들기 위해 ```Driver``` 클래스를 필요로 할수 있다, 그 때는 무언가를 하기 전에 체크를 한다. 예를 들어, ```spring.datasource.driverClassName=com.mysql.jdbc.Driver```를 설정하면 클래스는 적재가능해진다.
